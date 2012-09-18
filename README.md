@@ -1,4 +1,0 @@
-dotfiles
-========
-
-Common programs configurations

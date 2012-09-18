@@ -1,0 +1,189 @@
+### Custom variables
+export EDITOR="vim"
+export DEBFULLNAME="Robert David"
+export DEBEMAIL="robert.david.public@gmail.com"
+export GIT_AUTHOR_NAME="Robert David"
+export GIT_AUTHOR_EMAIL="robert.david.public@gmail.com"
+
+
+### Aliases
+alias c="clear"
+alias exe="chmod 755"
+alias rob="chown -R robert:users"
+alias mounts="df -kTh"
+alias dsize="du -h -x -c --max-depth=1"
+
+alias wgetdir="wget -r -L 1 -c"
+
+alias mc="mc -c -S gotar"
+alias edit="vim"
+shortcuts () { vim /home/robert/.shortcuts
+	       source ~/.shortcuts; }
+alias shortcat="less /home/robert/.shortcuts"
+
+alias lock="xlock"
+
+alias monitor_vga="xrandr --output LVDS1 --off --output VGA1 --auto"
+alias monitor_lvds="xrandr --output LVDS1 --auto --output VGA1 --off"
+alias monitor_both="xrandr --output LVDS1 --auto --right-of VGA1 --output VGA1 --auto"
+
+chrome-annon () { rm -rf /tmp/chrome-tmp
+  google-chrome --proxy-server="socks5://localhost:1080" --user-data-dir=/tmp/chrome-tmp &
+  ssh -D 1080 robert@linsystem.net
+  rm -rf /tmp/chrome-tmp }
+
+### Kalendář
+alias event_narozeniny="vim ~/.pal/narozeniny.pal"
+alias event_prace="vim ~/.pal/prace.pal"
+alias event_stanice="vim ~/.pal/stanice.pal"
+
+### Refresh
+alias bashrc="source ~/.bashrc"
+fontref () { mkfontscale
+	     mkfontdir 
+	     xset fp rehash; }
+ref () { env-update
+	 source /etc/profile; }
+### End refresh
+
+### Git
+git-create-branch () {
+    if [ $# -ne 1 ]
+    then
+	echo 1>&2 Usage: $0 branch_name
+	exit 127
+    fi
+    git push origin origin:refs/heads/$1
+    git fetch origin
+    git checkout --track -b $1 origin/$1
+    git pull
+}
+### End git
+
+### VPN & remote
+function vpn() {
+	[[ $# -lt 1 ]] && return 1
+	case $1 in 
+		ls)
+			ls -l /etc/openvpn/*/openvpn.conf | cut -d/ -f4
+		;;
+		st)
+			 ps -ef |grep openvpn | grep daemon | cut -d/ -f4
+		;;
+		start)
+			sudo openvpn --daemon --config /etc/openvpn/$2/openvpn.conf
+		;;
+		stop)
+		  PID=`ps -ef | grep openvpn | grep daemon | grep $2 | tr -s " " ":" | cut -d: -f2`
+			sudo kill $PID
+		;;
+	esac	  
+}
+
+alias server='asc -YC -c blowfish robert@robert-server'
+alias server-linsystem='autossh -M 5001 -YC -c blowfish robert@linsystem.net -x -a -t "screen -RDUOA robert"'
+
+
+function asc() {
+    print -Pn "\e]0;%n@%m: autossh -t $* 'screen -RdUO'\a";
+    autossh -M 5000 "$@" -x -a -t 'screen -RDUOA robert'
+}
+
+function assh() {
+    print -Pn "\e]0;%n@%m: autossh -t $*\a";
+    autossh -M 5002 -x -a -t "$@"
+}
+
+remote-gnome () {   if [ -z $1 ] ; then
+			echo "Zadej user@server" ;
+		    else
+			DISPLAY=:0.0
+			Xephyr -ac -screen 1152x864 -br -reset -terminate 2>/dev/null :1 &
+			XEPPID=$!
+			DISPLAY=:1.0
+			ssh -YC -c blowfish $1 xterm -e gnome-session
+			DISPLAY=:0.0
+			kill $XEPPID ;
+		    fi
+		}
+		
+remote-kde () {   if [ -z $1 ] ; then
+			echo "Zadej user@server" ;
+		    else
+			DISPLAY=:0.0
+			Xephyr -ac -screen 1152x864 -br -reset -terminate 2>/dev/null :2 &
+			XEPPID=$!
+			sleep 2
+			DISPLAY=:2.0
+			xterm -e startkde
+			DISPLAY=:0.0
+			kill $XEPPID ;
+		    fi
+		}
+
+###
+
+### System
+alias vodafone="sudo pppd call vodafone-cable"
+
+alias lsdev="dmesg | tail -n 40 | grep -A 1 assuming"
+ext3tune () { 	mkfs.ext3 /dev/$1
+		tune2fs -o journal_data -O has_journal,dir_index /dev/$1
+		tune2fs -c 0 -i 0 /dev/$1
+		tune2fs -O dir_index /dev/$1
+		e2fsck -D /dev/$1; }
+### End system
+
+### APT
+aptupd () { sudo aptitude update
+	    sudo aptitude full-upgrade
+	    sudo aptitude autoclean; }
+alias aptdb="sudo aptitude update"
+alias aptadd="sudo aptitude install"
+alias aptdel="sudo aptitude remove"
+alias aptdelconf="sudo aptitude purge"
+alias aptlist="dpkg -L"
+alias aptfind="aptitude search"
+### End apt
+
+### Kernel 
+kmake () { nice make || exit 1
+    nice make install || exit 1
+		nice make modules_install; }
+		
+ckmake () { nice make clean 
+		nice make bzImage
+		nice make modules
+		nice make modules_install; }
+### End kernel
+
+### CD
+alias rip2ogg="rip -S -O -q 5"
+alias rip2mp3="rip -S -d /dev/sr0 -e -t -q 5"
+alias iso2cd="cdrecord dev=/dev/sr0 -dao -eject -force"
+iso2dvd () { growisofs -dvd-compat -Z /dev/sr0=$1; }
+any2dvd () { growisofs -dvd-compat -Z /dev/sr0 -J -R $@; }
+dvdplay () { mplayer -slang cs dvd://$1; }
+alias cdcopy="cdrdao copy --device /dev/sr0 --source-device /dev/sr1 --on-the-fly --speed"
+alias cdblankall="cdrecord -force dev=/dev/sr0 blank=all"
+alias cdblank="cdrecord -force dev=/dev/sr0 blank=fast"
+alias dvdblankall="dvd+rw-format -force=full /dev/sr0"
+alias dvdblank="dvd+rw-format /dev/sr0"
+### End cd
+
+### Printing
+alias print-file="lpr -o media=A4 -o lpi=7 -o cpi=14 -o page-left=15 -o page-top=30 -o page-right=15"
+### End printing
+
+### Note
+alias sync-home=" [ -e /home/robert/server/downloads/home-note ] && rsync -a -x -h -z --progress --delete /home/robert /home/robert/server/downloads/home-note"
+### End note
+
+#################################################################################################################
+
+### Cruft
+alias profili="wine /home/robert/Progs/profili/PROFILI.EXE"
+alias compufoil="wine /home/robert/Progs/compufoil/Cfwin.exe"
+carm () { cd /home/robert/Progs/carmageddon2
+	    wine carma2_HW.exe; }
+###

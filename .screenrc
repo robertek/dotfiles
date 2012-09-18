@@ -1,0 +1,4 @@
+defscrollback 3000
+
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G}%H %l %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
