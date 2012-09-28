@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git perl)
 
 source $ZSH/oh-my-zsh.sh
-source .shortcuts
+source $HOME/.dotfiles/.shortcuts
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.4:/usr/games/bin:/usr/sbin:/sbin
