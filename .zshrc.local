@@ -1,6 +1,0 @@
-source /home/robert/.shortcuts
-
-PATH+=":/usr/sbin:/sbin"
-PAGER="/usr/bin/less"
-
-pal -r 14 -c 0

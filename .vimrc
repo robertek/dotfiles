@@ -5,6 +5,7 @@ colorscheme anotherdark
 
 set backspace=indent,eol,start
 
+set nowrap
 set smartcase
 set showcmd
 set ts=2
