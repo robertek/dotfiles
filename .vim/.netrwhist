@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/robert/work/bc-robot/system/video-tester/test'
+let g:netrw_dirhist_2='/home/robert/work/devel/pi/OpenELEC.tv/scripts'
+let g:netrw_dirhist_3='/home/robert/.oh-my-zsh/custom/example'
+let g:netrw_dirhist_4='/home/robert/.oh-my-zsh/plugins/autojump'
+let g:netrw_dirhist_5='/home/robert/.oh-my-zsh/plugins/dirpersist'
+let g:netrw_dirhist_6='/home/robert/.oh-my-zsh/plugins/per-directory-history'
