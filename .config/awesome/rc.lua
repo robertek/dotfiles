@@ -28,7 +28,7 @@ modkey = "Mod4"
 
 --- Run programs on startup
 awful.util.spawn_with_shell("setxkbmap vok")
-awful.util.spawn_with_shell(awful.util.getdir("config") .. "/run_once kdeinit4")
+-- awful.util.spawn_with_shell(awful.util.getdir("config") .. "/run_once kdeinit4")
 awful.util.spawn_with_shell(awful.util.getdir("config") .. "/run_once kmix")
 awful.util.spawn_with_shell(awful.util.getdir("config") .. "/run_once xscreensaver")
 awful.util.spawn_with_shell(awful.util.getdir("config") .. "/run_once wicd-client -t")
