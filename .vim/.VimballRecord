@@ -1,1 +1,2 @@
 hyperlist.vba: call delete('/home/robert/.vim/syntax/hyperlist.vim')|call delete('/home/robert/.vim/doc/hyperlist.txt')|call delete('/home/robert/.vim/ftdetect/hyperlist.vim')|call delete('/home/robert/.vim/README_HyperList')
+supertab.vmb: call delete('/home/robert/.vim/doc/supertab.txt')|call delete('/home/robert/.vim/plugin/supertab.vim')
