@@ -17,6 +17,8 @@ set nu
 set history=1000
 set autoread
 
+set hidden
+
 filetype plugin on
 filetype indent on
 let g:tex_flavor='latex'
