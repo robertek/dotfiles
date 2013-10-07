@@ -13,7 +13,7 @@ urxvt.iso14755:         false
 
 ! Extensions
 urxvt.perl-lib:         ~/.dotfiles/.urxvt
-urxvt.perl-ext-common:  default,matcher,clipboard
+urxvt.perl-ext-common:  default,matcher
 !  clipboard handler
 !urxvt.keysym.Shift-Control-C:  perl:clipboard:copy
 !urxvt.keysym.Shift-Control-V:  perl:clipboard:paste
