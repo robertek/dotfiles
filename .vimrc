@@ -22,6 +22,7 @@ set hidden
 filetype plugin on
 filetype indent on
 let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
 
 " Append modeline after last line in buffer.
 function! AppendModeline()
