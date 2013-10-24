@@ -1,7 +1,8 @@
 syntax on
 set mouse=ni
 set t_Co=256
-colorscheme anotherdark
+"colorscheme anotherdark
+colorscheme solarized
 
 set backspace=indent,eol,start
 
@@ -11,7 +12,6 @@ set showcmd
 set ts=2
 set cindent
 set sw=2
-"set expandtab
 set incsearch
 set nu
 set history=1000
