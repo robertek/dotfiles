@@ -2,6 +2,7 @@ syntax on
 set mouse=ni
 set t_Co=256
 colorscheme solarized
+set background=dark
 
 set backspace=indent,eol,start
 

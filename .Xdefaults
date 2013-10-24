@@ -57,7 +57,8 @@ xterm.charClass: 33:48, 37:48, 42:48, 45-47:48, 63-64:48, 126:48
 
 ! Dark
 
-#define S_base03 #002b36
+!#define S_base03 #002b36
+#define S_base03 #001520
 #define S_base02 #073642
 #define S_base01 #586e75
 #define S_base00 #657b83
