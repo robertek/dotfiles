@@ -14,12 +14,10 @@ urxvt.iso14755:         false
 ! Extensions
 urxvt.perl-lib:         ~/.dotfiles/.urxvt
 urxvt.perl-ext-common:  default,matcher
-!  clipboard handler
-!urxvt.keysym.Shift-Control-C:  perl:clipboard:copy
-!urxvt.keysym.Shift-Control-V:  perl:clipboard:paste
+! clipboard handler
 urxvt.clipboard.copycmd:    xsel -i
 urxvt.clipboard.pastecmd:   xsel -o
-!  url launcher
+! url launcher
 urxvt.urlLauncher:      /usr/bin/firefox
 urxvt.matcher.button:   1
 urxvt.cutchars:         `()*<>[]{|}
@@ -30,57 +28,15 @@ urxvt.allow_bold:   true
 urxvt.font:         xft:Terminus:pixelsize=12:antialias=true:hinting=true
 urxvt.boldFont:     xft:Terminus:pixelsize=12:antialias=true:hinting=true
 
-!black.normal     : xoria256.LineNr.guibg
-!black.bright     : black.normal.rgb - 8
-!urxvt.color0      : #121212
-!urxvt.color8      : #0a0a0a
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! xterm
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+xterm.faceSize:        12
+xterm.loginshell:      true
+xterm.savelines:       16384
+xterm.scrollTtyOutput: false
+xterm.charClass: 33:48, 37:48, 42:48, 45-47:48, 63-64:48, 126:48
 
-!red.normal       : red.bright.r - 8
-!red.bright       : xoria256.Special.guifg
-!urxvt.color1      : #d78787
-!urxvt.color9      : #df8787
-
-!green.normal     : green.bright.g - 8
-!green.bright     : xoria256.PreProc.guifg
-!urxvt.color2      : #afd787
-!urxvt.color10     : #afdf87
-
-!yellow.normal    : yellow.bright.rg - 8
-!yellow.bright    : xoria256.Special.guifg
-!urxvt.color3      : #f7f7af
-!urxvt.color11     : #ffffaf
-
-!blue.normal      : blue.bright.b - 8
-!blue.bright      : xoria256.Statement.guifg
-!urxvt.color4      : #87afd7
-!urxvt.color12     : #87afdf
-
-!magenta.normal   : magenta.bright.rb - 8
-!magenta.bright   : xoria256.Identifier.guifg
-!urxvt.color5      : #d7afd7
-!urxvt.color13     : #dfafdf
-
-!cyan.normal      : cyan.bright.gb - 8
-!cyan.bright      : green.bright + blue.bright
-!urxvt.color6      : #afd7d7
-!urxvt.color14     : #afdfdf
-
-!white.normal     : white.bright.rgb - 8
-!white.bright     : xoria256.Folded.guifg
-!urxvt.color7      : #e6e6e6
-!urxvt.color15     : #eeeeee
-
-!foreground       : xoria256.Normal.guifg
-!background       : xoria256.Normal.guibg
-!cursor           : xoria256.Cursor.guibg
-!urxvt.foreground  : #d0d0d0
-!urxvt.background  : #1c1c1c
-!urxvt.cursorColor : #ffaf00
-
-!bold             : xoria256.Type.guifg
-!underline        : xoria256.htmlValue.guifg
-!urxvt.colorBD     : #afafdf
-!urxvt.colorUL     : #dfdfaf
 
 ! Solarized color scheme for the X Window System
 !
@@ -102,7 +58,6 @@ urxvt.boldFont:     xft:Terminus:pixelsize=12:antialias=true:hinting=true
 ! Dark
 
 #define S_base03 #002b36
-!#define S_base03 #1c1c1c
 #define S_base02 #073642
 #define S_base01 #586e75
 #define S_base00 #657b83
