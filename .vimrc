@@ -1,12 +1,10 @@
 syntax on
 set mouse=ni
 set t_Co=256
-"colorscheme anotherdark
 colorscheme solarized
 
 set backspace=indent,eol,start
 
-set nowrap
 set smartcase
 set showcmd
 set ts=2
@@ -16,6 +14,7 @@ set incsearch
 set nu
 set history=1000
 set autoread
+set foldmethod=indent
 
 set hidden
 
