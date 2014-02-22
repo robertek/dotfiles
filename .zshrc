@@ -36,4 +36,4 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/.shortcuts
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.4:/usr/games/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.4:/usr/games/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/kde4/bin

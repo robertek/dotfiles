@@ -15,7 +15,9 @@ set incsearch
 set nu
 set history=1000
 set autoread
-set foldmethod=indent
+set foldmethod=manual
+
+set cm=blowfish
 
 set hidden
 

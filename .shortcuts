@@ -25,7 +25,7 @@ alias lock="xlock"
 
 alias monitor_vga="xrandr --output LVDS1 --off --output VGA1 --auto"
 alias monitor_lvds="xrandr --output LVDS1 --auto --output VGA1 --off"
-alias monitor_both="xrandr --output LVDS1 --auto --right-of VGA1 --output VGA1 --auto"
+alias monitor_both="xrandr --output LVDS1 --auto --left-of VGA1 --output VGA1 --auto"
 
 chrome-annon () { rm -rf /tmp/chrome-tmp
   google-chrome --proxy-server="socks5://localhost:1080" --user-data-dir=/tmp/chrome-tmp &
@@ -74,7 +74,7 @@ function vpn() {
 			sudo openvpn --daemon --config /etc/openvpn/$2/openvpn.conf
 		;;
 		stop)
-		  PID=`ps -ef | grep openvpn | grep daemon | grep $2 | tr -s " " ":" | cut -d: -f2`
+		  PID=`ps aux | grep openvpn | grep daemon | awk '{ print $2 }'`
 			sudo kill $PID
 		;;
 	esac	  
