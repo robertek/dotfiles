@@ -1,8 +1,8 @@
 syntax on
 set mouse=ni
 set t_Co=256
-colorscheme solarized
 set background=dark
+colorscheme desert256
 
 set backspace=indent,eol,start
 
@@ -19,12 +19,15 @@ set foldmethod=manual
 
 set cm=blowfish
 
+set thesaurus+=~/.vim/mthesaur.txt
+
 set hidden
 
 filetype plugin on
 filetype indent on
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
+set iskeyword+=:
 
 " Append modeline after last line in buffer.
 function! AppendModeline()
