@@ -9,7 +9,7 @@ ZSH=$HOME/.dotfiles/.oh-my-zsh
 ZSH_THEME="fox"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -24,18 +24,30 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
+# Uncomment the following line to disable command auto-correction.
+DISABLE_CORRECTION="true"
+
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git perl per-directory-history)
+plugins=(git mercurial perl colored-man cp history-substring-search jump)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/.shortcuts
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.5.4:/usr/games/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/kde4/bin
-#export LANG=en_US.UTF-8
-#export LC_ALL=en_US.UTF-8
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
