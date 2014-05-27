@@ -6,6 +6,7 @@ colorscheme desert256
 
 set backspace=indent,eol,start
 
+set laststatus=2
 set smartcase
 set showcmd
 set ts=2
