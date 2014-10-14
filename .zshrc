@@ -46,7 +46,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/.shortcuts
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
