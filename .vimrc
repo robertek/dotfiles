@@ -32,13 +32,16 @@ hi ColorColumn ctermbg=grey guibg=grey50
 " file encryption
 set cm=blowfish
 
-" plugins, latex
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
-set iskeyword+=:
+" load pathogen and it plugins
+execute pathogen#infect()
+
+" plugins
 set thesaurus+=~/.vim/mthesaur.txt
 
 " set status line
 set laststatus=2
 let g:airline_theme = "wombat"
 let g:airline#extensions#tabline#enabled = 1
+
+" enable rainbow plugin
+let g:rainbow_active = 1
