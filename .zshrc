@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mercurial perl colored-man cp history-substring-search jump wd fancy-ctrl-z zsh-navigation-tools vi-mode)
+plugins=(git mercurial perl colored-man history-substring-search wd fancy-ctrl-z zsh-navigation-tools vi-mode)
 
 # User configuration
 
