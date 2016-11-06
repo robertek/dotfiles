@@ -45,3 +45,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " enable rainbow plugin
 let g:rainbow_active = 1
+
+" gvim
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+highlight Normal guifg=white guibg=black
