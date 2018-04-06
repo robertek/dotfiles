@@ -21,9 +21,7 @@ set cindent
 set sw=8
 set ts=8
 set sts=8
-set textwidth=80
 set noexpandtab
-set cinoptions=t0,(.5s,u0,:0,+.5s
 
 " 80 char border
 set colorcolumn=81
@@ -40,8 +38,6 @@ set thesaurus+=~/.vim/mthesaur.txt
 
 " set status line
 set laststatus=2
-let g:airline_theme = "wombat"
-let g:airline#extensions#tabline#enabled = 1
 
 " enable rainbow plugin
 let g:rainbow_active = 1
