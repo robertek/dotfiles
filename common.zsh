@@ -40,15 +40,19 @@ zstyle ':completion:*' list-colors ''
 # ZPLUG
 #
 
+print "Loading ZPLUG"
+
 source $HOME/.dotfiles/.zplug/init.zsh
 
-zplug "zsh-users/zsh-history-substring-search"
+print "Loading modules"
+
 zplug "ael-code/zsh-colored-man-pages"
 zplug "softmoth/zsh-vim-mode"
 zplug "mdumitru/git-aliases"
 zplug "hcgraf/zsh-mercurial"
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
 zplug 'themes/gentoo', from:oh-my-zsh, as:theme
 
@@ -63,3 +67,11 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+
+#
+# plugin settings
+#
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
