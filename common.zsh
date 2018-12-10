@@ -1,22 +1,27 @@
 #
 # variables
 #
-export LSCOLORS='exfxcxdxbxegedAbAgacad'
-export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=1;;41:sg=1;;46:tw=0;42:ow=0;43:"
+
+export EDITOR="vim"
+export GIT_AUTHOR_NAME="Robert David"
+export GIT_AUTHOR_EMAIL="robert.david.public@gmail.com"
 
 
 #
 # aliases
 #
-source $HOME/.dotfiles/.shortcuts
 
+# colored ls and its shortcuts
+export LSCOLORS='exfxcxdxbxegedAbAgacad'
+export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=1;;41:sg=1;;46:tw=0;42:ow=0;43:"
 ls --color -d . &>/dev/null && alias ls='ls --color=tty' || { ls -G . &>/dev/null && alias ls='ls -G' }
 alias ll="ls -lh"
 alias la="ls -A"
 alias l="ls -lA"
 
+
 #
-# config
+# general zsh config
 #
 
 # history
@@ -31,9 +36,12 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history
 
-# completion
+# completion menu
 zstyle ':completion:*:*:*:*:*' menu select
+# completion color
 zstyle ':completion:*' list-colors ''
+# completion case insensitive
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 
 #
@@ -73,5 +81,6 @@ zplug load
 # plugin settings
 #
 
+# history sustring search attach to UP and DOWN key
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
