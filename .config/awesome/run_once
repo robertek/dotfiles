@@ -1,3 +1,0 @@
-#! /bin/bash
-
-ps -Af | grep -o -w ".*$1" | grep -v grep | grep -v run_once || $@ >/dev/null 2>&1 &
