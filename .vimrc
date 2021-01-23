@@ -27,9 +27,6 @@ set noexpandtab
 set colorcolumn=81
 hi ColorColumn ctermbg=grey guibg=grey50
 
-" file encryption
-set cm=blowfish
-
 " load pathogen and it plugins
 execute pathogen#infect()
 
