@@ -21,7 +21,7 @@ zpm load zpm-zsh/core-config
 zpm load zpm-zsh/colors
 
 # theme
-zpm load agkozak/agkozak-zsh-prompt
+zpm load mengelbrecht/slimline
 
 # load env from directory (use .in, .out files)
 zpm load zpm-zsh/autoenv,async
@@ -61,5 +61,3 @@ alias la="ls -A"
 alias l="ls -lAh"
 
 # theme settings
-AGKOZAK_MULTILINE=0
-AGKOZAK_PROMPT_CHAR=( $ %# : )
