@@ -61,3 +61,4 @@ alias la="ls -A"
 alias l="ls -lAh"
 
 # theme settings
+SLIMLINE_USER_HOST_INFO_DEFAULT_USER=robert
