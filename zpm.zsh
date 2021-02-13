@@ -21,7 +21,7 @@ zpm load zpm-zsh/core-config
 zpm load zpm-zsh/colors
 
 # theme
-zpm load mengelbrecht/slimline
+zpm load robertek/slimline
 
 # load env from directory (use .in, .out files)
 zpm load zpm-zsh/autoenv,async
@@ -61,4 +61,3 @@ alias la="ls -A"
 alias l="ls -lAh"
 
 # theme settings
-SLIMLINE_USER_HOST_INFO_DEFAULT_USER=robert
