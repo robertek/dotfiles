@@ -12,7 +12,7 @@ source ~/.zpm/zpm.zsh
 #
 
 # tmux
-#zpm if ssh load zpm-zsh/tmux
+zpm if ssh load robertek/zsh-tmux
 
 # load base
 zpm load zpm-zsh/core-config
@@ -44,6 +44,9 @@ zpm load zsh-users/zsh-autosuggestions,source:zsh-autosuggestions.zsh,async
 
 # syntax highlighting 
 zpm load zdharma/fast-syntax-highlighting,async
+
+# history search
+zpm load zdharma/history-search-multi-word,fpath:/,async
 
 # vim mode
 zpm load softmoth/zsh-vim-mode
