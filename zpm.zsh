@@ -11,9 +11,6 @@ source ~/.zpm/zpm.zsh
 # plugins
 #
 
-# tmux
-zpm if ssh load robertek/zsh-tmux
-
 # load base
 zpm load zpm-zsh/core-config
 
