@@ -2,6 +2,8 @@
 # ZPM base
 #
 
+TMPDIR="${HOME}/.cache"
+
 if [[ ! -f ~/.zpm/zpm.zsh ]]; then
   git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
 fi
