@@ -22,6 +22,8 @@ alias ll="ls -lh"
 alias la="ls -A"
 alias l="ls -lAh"
 
+alias vimpager="~/.vim/bundle/vimpager/vimpager"
+
 
 #
 # ZPM
