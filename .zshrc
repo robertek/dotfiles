@@ -31,3 +31,10 @@ alias vimpager="~/.vim/bundle/vimpager/vimpager"
 
 source $HOME/.dotfiles/zpm.zsh
 
+
+#
+# misc settings
+#
+
+# do not ask for redirect to existing file confirmation
+setopt clobber
