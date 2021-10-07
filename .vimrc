@@ -39,7 +39,18 @@ set laststatus=2
 " enable rainbow plugin
 let g:rainbow_active = 1
 
+" async update
+set updatetime=100
+
 " gvim
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 highlight Normal guifg=white guibg=black
+
+if filereadable("/opt/onbld/etc/vim/cstyle.vim")
+      :source /opt/onbld/etc/vim/cstyle.vim
+endif
+
+if filereadable("/opt/onbld/etc/vim/cscope.vim")
+      :source /opt/onbld/etc/vim/cscope.vim
+endif
