@@ -22,6 +22,8 @@ set sw=8
 set ts=8
 set sts=8
 set noexpandtab
+set comments=sr:/*,mb:*,e:*/
+set cinoptions=+4,(4
 
 " 80 char border
 set colorcolumn=81
@@ -41,6 +43,10 @@ let g:rainbow_active = 1
 
 " async update
 set updatetime=100
+
+" colorscheme
+set background=dark
+colorscheme gruvbox
 
 " gvim
 set guioptions-=m  "remove menu bar
