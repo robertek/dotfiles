@@ -36,7 +36,7 @@ zpm load hcgraf/zsh-mercurial,async
 zpm load zsh-users/zsh-autosuggestions,source:zsh-autosuggestions.zsh,async
 
 # syntax highlighting 
-zpm load zdharma/fast-syntax-highlighting,async
+zpm load zdharma-continuum/fast-syntax-highlighting,async
 
 # vim mode
 zpm load jeffreytse/zsh-vi-mode,async
