@@ -81,19 +81,26 @@ zinit light mdumitru/git-aliases
 zinit light hcgraf/zsh-mercurial
 
 # autosuggestions
+zinit ice depth=1
 zinit light zsh-users/zsh-autosuggestions
 
 # history search
+zinit ice depth=1
 zinit light zdharma-continuum/history-search-multi-word
 
 # syntax highlighting
+zinit ice depth=1
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # vim mode
+zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
 #
 # misc settings
 #
+
+# enable the multi search
+zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
