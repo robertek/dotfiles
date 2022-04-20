@@ -24,17 +24,76 @@ alias l="ls -lAh"
 
 alias vimpager="~/.vim/bundle/vimpager/vimpager"
 
+#
+# zsh settings
+#
+setopt appendhistory
+setopt autocd
+setopt autopushd
+setopt autoremoveslash
+setopt banghist
+setopt braceccl
+setopt chaselinks
+setopt combiningchars
+setopt correct
+setopt extendedglob
+setopt histexpiredupsfirst
+setopt histfindnodups
+setopt histignorealldups
+setopt histignoredups
+setopt histignorespace
+setopt histreduceblanks
+setopt histsavenodups
+setopt histverify
+setopt incappendhistory
+setopt interactivecomments
+setopt pushdignoredups
+setopt pushdsilent
+setopt pushdtohome
+
+# history
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
 
 #
-# ZPM
+# Zinit
+#
+mkdir -p ${HOME}/.zinit
+source "${HOME}/.dotfiles/zinit/zinit.zsh"
+
+#
+# plugins
 #
 
-source $HOME/.dotfiles/zpm.zsh
+# theme
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
 
+# load env from directory (use .in, .out files)
+zinit light zpm-zsh/autoenv
+
+# ctrl-z for fg (vim)
+zinit light mdumitru/fancy-ctrl-z
+
+# git and mercurial shortcuts
+zinit light mdumitru/git-aliases
+zinit light hcgraf/zsh-mercurial
+
+# autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+
+# history search
+zinit light zdharma-continuum/history-search-multi-word
+
+# syntax highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# vim mode
+zinit light jeffreytse/zsh-vi-mode
 
 #
 # misc settings
 #
 
-# do not ask for redirect to existing file confirmation
-setopt clobber
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

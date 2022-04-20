@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/gruvbox"]
 	path = .vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "zinit"]
+	path = zinit
+	url = https://github.com/zdharma-continuum/zinit.git
