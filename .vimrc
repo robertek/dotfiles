@@ -53,10 +53,6 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 highlight Normal guifg=white guibg=black
 
-if filereadable("/opt/onbld/etc/vim/cstyle.vim")
-      :source /opt/onbld/etc/vim/cstyle.vim
-endif
-
-if filereadable("/opt/onbld/etc/vim/cscope.vim")
-      :source /opt/onbld/etc/vim/cscope.vim
+if filereadable(expand("~/.vimrc.local"))
+        :source ~/.vimrc.local
 endif
