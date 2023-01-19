@@ -74,7 +74,7 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 #
 
 # theme
-zinit ice depth"1"
+zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 # load env from directory (use .in, .out files)
