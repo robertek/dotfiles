@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 #
 # variables 
@@ -13,6 +13,7 @@ export LC_ALL=en_US.UTF-8
 export PATH=~/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david.public@gmail.com"
+export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 
 [[ -e $HOME/.profile ]] && source $HOME/.profile
 
@@ -58,6 +59,9 @@ setopt pushdignoredups
 setopt pushdsilent
 setopt pushdtohome
 
+# completion
+autoload -U compinit; compinit
+
 # history
 HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
@@ -74,8 +78,13 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 #
 
 # theme
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+#zinit ice depth=1
+#zinit light romkatv/powerlevel10k
+ 
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
 # load env from directory (use .in, .out files)
 zinit light zpm-zsh/autoenv
@@ -110,4 +119,4 @@ zinit light jeffreytse/zsh-vi-mode
 # enable the multi search
 zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
