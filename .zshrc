@@ -77,15 +77,6 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 # plugins
 #
 
-# theme
-#zinit ice depth=1
-#zinit light romkatv/powerlevel10k
- 
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
-
 # load env from directory (use .in, .out files)
 zinit light zpm-zsh/autoenv
 
@@ -118,5 +109,7 @@ zinit light jeffreytse/zsh-vi-mode
 
 # enable the multi search
 zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
+
+eval "$(starship init zsh)"
 
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
