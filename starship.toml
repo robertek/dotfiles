@@ -16,8 +16,6 @@ symbol = " "
 [rust]
 symbol = " "
 
-[os.symbols]
-FreeBSD = " "
-Gentoo = " "
-Linux = " "
-Unknown = " "
+[hostname]
+ssh_symbol = '󰱠 '
+trim_at = ''
