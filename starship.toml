@@ -1,2 +1,23 @@
 # Inserts a blank line between shell prompts
 add_newline = false
+
+[git_branch]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[package]
+symbol = " "
+
+[c]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[os.symbols]
+FreeBSD = " "
+Gentoo = " "
+Linux = " "
+Unknown = " "
