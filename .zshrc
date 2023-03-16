@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
 #
 # variables 
 #
@@ -68,9 +61,6 @@ setopt pushdignoredups
 setopt pushdsilent
 setopt pushdtohome
 
-# completion
-autoload -U compinit; compinit
-
 # history
 HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
@@ -86,31 +76,14 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 # plugins
 #
 
-# load env from directory (use .in, .out files)
-zinit light zpm-zsh/autoenv
-
-# ctrl-z for fg (vim)
-zinit light mdumitru/fancy-ctrl-z
-
-# git and mercurial shortcuts
-zinit light mdumitru/git-aliases
-zinit light hcgraf/zsh-mercurial
-
-# autosuggestions
-zinit ice depth=1
-zinit light zsh-users/zsh-autosuggestions
-
-# history search
-zinit ice depth=1
-zinit light zdharma-continuum/history-search-multi-word
-
-# syntax highlighting
-zinit ice depth=1
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-# vim mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+zinit wait lucid for \
+	zdharma-continuum/history-search-multi-word \
+	atinit"zicompinit; zicdreplay" \
+		zdharma-continuum/fast-syntax-highlighting \
+	zsh-users/zsh-autosuggestions \
+	mdumitru/git-aliases \
+	hcgraf/zsh-mercurial \
+	jeffreytse/zsh-vi-mode
 
 #
 # misc settings
@@ -119,6 +92,5 @@ zinit light jeffreytse/zsh-vi-mode
 # enable the multi search
 zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
 
+# start the starship theme
 eval "$(starship init zsh)"
-
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
