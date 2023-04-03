@@ -1,0 +1,54 @@
+[options]
+# theme
+colorscheme = "gruvbox"
+colorscheme_bg = "dark"
+
+# true colors
+enable_guicolors = true
+
+# filetype icon
+enable_tabline_filetype_icon = true
+
+# indent
+default_indent = 4
+
+# do not expand tabs
+expand_tab = false
+
+# set end column line
+max_column = 81
+
+# cursor
+enable_cursorline = true
+enable_cursorcolumn = true
+
+# filetree
+filetree_direction = "left"
+
+[[layers]]
+name = 'core'
+enable_smooth_scrolling = false
+
+[[layers]]
+name = 'fzf'
+
+[[layers]]
+name = 'git'
+
+[[layers]]
+name = 'VersionControl'
+
+[[layers]]
+name = "lang#rust"
+
+[[layers]]
+name = "lang#sh"
+
+[[layers]]
+name = "lsp"
+filetypes = [
+	"rust"
+]
+[layers.override_cmd]
+rust = ["rust-analyzer"]
+
