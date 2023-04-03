@@ -40,3 +40,6 @@
 [submodule "zinit"]
 	path = zinit
 	url = https://github.com/zdharma-continuum/zinit.git
+[submodule "SpaceVim"]
+	path = SpaceVim
+	url = https://github.com/SpaceVim/SpaceVim.git
