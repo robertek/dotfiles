@@ -39,16 +39,4 @@ name = 'git'
 name = 'VersionControl'
 
 [[layers]]
-name = "lang#rust"
-
-[[layers]]
 name = "lang#sh"
-
-[[layers]]
-name = "lsp"
-filetypes = [
-	"rust"
-]
-[layers.override_cmd]
-rust = ["rust-analyzer"]
-
