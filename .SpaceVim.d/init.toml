@@ -10,7 +10,7 @@ enable_guicolors = true
 enable_tabline_filetype_icon = true
 
 # indent
-default_indent = 4
+default_indent = 8
 
 # do not expand tabs
 expand_tab = false
@@ -24,6 +24,9 @@ enable_cursorcolumn = true
 
 # filetree
 filetree_direction = "left"
+
+# autocomplete
+autocomplete_method = "coc"
 
 [[layers]]
 name = 'core'
