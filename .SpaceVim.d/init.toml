@@ -43,3 +43,7 @@ name = 'VersionControl'
 
 [[layers]]
 name = "lang#sh"
+
+[[layers]]
+name = "autocomplete"
+auto_completion_return_key_behavior = "complete"
