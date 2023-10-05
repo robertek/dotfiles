@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=~/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
 export GIT_AUTHOR_NAME="Robert David"
-export GIT_AUTHOR_EMAIL="robert.david.public@gmail.com"
+export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 
 [[ -e $HOME/.profile ]] && source $HOME/.profile
@@ -23,6 +23,7 @@ ls --color -d . &>/dev/null && alias ls='ls --color' || { ls -G . &>/dev/null &&
 which lsd >/dev/null
 if [[ $? -eq 0 ]]
 then
+	alias ls="lsd"
 	alias ll="lsd -lh"
 	alias la="lsd -A"
 	alias l="lsd -lAh"
