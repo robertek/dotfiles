@@ -16,34 +16,36 @@ export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 #
 
 # colored ls and its shortcuts
-export LSCOLORS='exfxcxdxbxegedAbAgacad'
-export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=1;;41:sg=1;;46:tw=0;42:ow=0;43:"
-ls --color -d . &>/dev/null && alias ls='ls --color' || { ls -G . &>/dev/null && alias ls='ls -G' }
-
 LS=""
-which eza >/dev/null && LS="eza"
 which lsd >/dev/null && LS="lsd"
+which eza >/dev/null && LS="eza"
 
 case $LS in
-       "eza")
-               alias ls="eza"
-               alias ll="eza -l"
-               alias la="eza -a"
-               alias lt="eza -T"
-               alias l="eza -la"
-               ;;
-       "lsd")
-               alias ls="lsd"
-               alias ll="lsd -lh"
-               alias la="lsd -A"
-               alias lt="lsd --tree"
-               alias l="lsd -lAh"
-               ;;
-       *)
-               alias ll="ls -lh"
-               alias la="ls -A"
-               alias l="ls -lAh"
-               ;;
+	"eza")
+		EZA_DEF="--icons --group-directories-first"
+		EZA_DEFL="$EZA_DEF --octal-permissions --no-permissions --long"
+		alias ls="eza $EZA_DEF"
+		alias ll="eza $EZA_DEFL"
+		alias la="eza $EZA_DEF --all"
+		alias lt="eza $EZA_DEF --tree"
+		alias l="eza $EZA_DEFL --all"
+		;;
+	"lsd")
+		alias ls="lsd"
+		alias ll="lsd -lh"
+		alias la="lsd -A"
+		alias lt="lsd --tree"
+		alias l="lsd -lAh"
+		;;
+	*)
+		export LSCOLORS='exfxcxdxbxegedAbAgacad'
+		export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=1;;41:sg=1;;46:tw=0;42:ow=0;43:"
+		ls --color -d . &>/dev/null && alias ls='ls --color' || { ls -G . &>/dev/null && alias ls='ls -G' }
+
+		alias ll="ls -lh"
+		alias la="ls -A"
+		alias l="ls -lAh"
+		;;
 esac
 
 alias vimpager="~/.vim/bundle/vimpager/vimpager"
