@@ -31,11 +31,13 @@ case $LS in
 		alias l="eza $EZA_DEFL --all"
 		;;
 	"lsd")
-		alias ls="lsd"
-		alias ll="lsd -lh"
-		alias la="lsd -A"
-		alias lt="lsd --tree"
-		alias l="lsd -lAh"
+		LSD_DEF="--group-directories-first"
+		LSD_DEFL="$LSD_DEF --permission octal --blocks permission,size,user,date,name"
+		alias ls="lsd $LSD_DEF"
+		alias ll="lsd $LSD_DEFL --human-readable"
+		alias la="lsd $LSD_DEF --almost-all"
+		alias lt="lsd $LSD_DEF --tree --depth 3"
+		alias l="lsd $LSD_DEFL --almost-all --human-readable"
 		;;
 	*)
 		export LSCOLORS='exfxcxdxbxegedAbAgacad'
