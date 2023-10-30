@@ -8,6 +8,19 @@ export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 
+autotmux() {
+	if [ -z "$TMUX" ]
+	then
+		tmux has -t $USER
+		if [ $? -eq 0 ]
+		then
+			exec tmux attach -d -t $USER
+		else
+			exec tmux new -s $USER
+		fi
+	fi
+}
+
 [[ -e $HOME/.profile ]] && source $HOME/.profile
 
 
