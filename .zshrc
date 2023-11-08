@@ -14,9 +14,9 @@ autotmux() {
 		tmux has -t $USER
 		if [ $? -eq 0 ]
 		then
-			exec tmux attach -2 -d -t $USER
+			exec tmux -2 attach -d -t $USER
 		else
-			exec tmux new -2 -s $USER
+			exec tmux -2 new -s $USER
 		fi
 	fi
 }
