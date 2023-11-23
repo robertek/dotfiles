@@ -28,6 +28,9 @@ filetree_direction = "left"
 # autocomplete
 autocomplete_method = "coc"
 
+# absolute numbering
+relativenumber = false
+
 [[layers]]
 name = 'core'
 enable_smooth_scrolling = false
