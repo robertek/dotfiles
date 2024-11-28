@@ -101,6 +101,8 @@ SAVEHIST=10000
 #
 # Zinit
 #
+declare -A ZINIT
+ZINIT[NO_ALIASES]=1
 mkdir -p ${HOME}/.zinit
 source "${HOME}/.dotfiles/zinit/zinit.zsh"
 
