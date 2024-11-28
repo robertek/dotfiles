@@ -3,7 +3,8 @@
 #
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH=~/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
+export PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
+export PATH=$HOME/.tmux/plugins/tmux-session-wizard/bin:$PATH
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
