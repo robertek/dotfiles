@@ -123,5 +123,8 @@ zinit wait lucid for \
 # enable the multi search
 zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
 
+# init the zoxide
+which zoxide >/dev/null && eval "$(zoxide init zsh)"
+
 # start the starship theme
-eval "$(starship init zsh)"
+which starship >/dev/null && eval "$(starship init zsh)"
