@@ -4,16 +4,19 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
-export PATH=$HOME/.tmux/plugins/tmux-session-wizard/bin:$PATH
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
+export EDITOR="vim"
 
 autotmux() {
-	if [ -z "$TMUX" ]
+	if [[ -z "$ZELLIJ" && -z "$TMUX" ]]
 	then
+		which tmux >/dev/null 2>&1
+		[[ $? -ne 0 ]] && return 1
+
 		tmux has -t $USER
-		if [ $? -eq 0 ]
+		if [[ $? -eq 0 ]]
 		then
 			exec tmux -2 attach -d -t $USER
 		else
@@ -22,8 +25,19 @@ autotmux() {
 	fi
 }
 
+autozellij() {
+	if [[ -z "$ZELLIJ" && -z "$TMUX" ]]
+	then
+		which zellij >/dev/null 2>&1
+		[[ $? -ne 0 ]] && return 1
+
+		exec zellij attach -c $USER
+	fi
+}
+
 [[ -e $HOME/.profile ]] && source $HOME/.profile
 
+[[ -z $SSH_CLIENT ]] || autozellij || autotmux
 
 #
 # aliases
@@ -123,25 +137,6 @@ zinit wait lucid for \
 #
 # misc settings
 #
-
-# sesh
-function sesh-sessions() {
-  {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-    zle reset-prompt > /dev/null 2>&1 || true
-    [[ -z "$session" ]] && return
-    sesh connect $session
-  }
-}
-
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
-
 
 # enable the multi search
 zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
