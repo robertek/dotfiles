@@ -1,8 +1,4 @@
 [options]
-# theme
-colorscheme = "gruvbox"
-colorscheme_bg = "dark"
-
 # true colors
 enable_guicolors = true
 
@@ -10,7 +6,7 @@ enable_guicolors = true
 enable_tabline_filetype_icon = true
 
 # indent
-default_indent = 8
+default_indent = 4
 
 # do not expand tabs
 expand_tab = false
@@ -31,12 +27,26 @@ autocomplete_method = "coc"
 # absolute numbering
 relativenumber = false
 
+# bootstrap
+bootstrap_after = 'myspacevim#after'
+
+########################################
+# layers
+
+# disable smooth scrolling
 [[layers]]
 name = 'core'
 enable_smooth_scrolling = false
 
 [[layers]]
+name = "autocomplete"
+auto_completion_return_key_behavior = "complete"
+
+[[layers]]
 name = 'fzf'
+
+[[layers]]
+name = 'cscope'
 
 [[layers]]
 name = 'git'
@@ -45,8 +55,23 @@ name = 'git'
 name = 'VersionControl'
 
 [[layers]]
-name = "lang#sh"
+name = "lsp"
+filetypes = [
+	"c",
+	"javascript"
+]
+########################################
+
+########################################
+# lang
+[[layers]]
+name = "lang#c"
+enable_clang_syntax_highlight = true
+format_on_save = true
 
 [[layers]]
-name = "autocomplete"
-auto_completion_return_key_behavior = "complete"
+name = "lang#rust"
+
+[[layers]]
+name = "lang#sh"
+########################################
