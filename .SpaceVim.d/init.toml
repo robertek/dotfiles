@@ -50,6 +50,7 @@ name = 'cscope'
 
 [[layers]]
 name = 'git'
+git_plugin = 'fugitive'
 
 [[layers]]
 name = 'VersionControl'
@@ -58,15 +59,16 @@ name = 'VersionControl'
 name = "lsp"
 filetypes = [
 	"c",
-	"javascript"
+	"rust"
 ]
+[layers.override_cmd]
+    c = ["ccls"]
 ########################################
 
 ########################################
 # lang
 [[layers]]
 name = "lang#c"
-enable_clang_syntax_highlight = true
 format_on_save = true
 
 [[layers]]
