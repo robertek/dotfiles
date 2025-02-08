@@ -27,6 +27,9 @@ autocomplete_method = "coc"
 # absolute numbering
 relativenumber = false
 
+# hide file tree
+enable_vimfiler_welcome = false
+
 # bootstrap
 bootstrap_after = 'myspacevim#after'
 
