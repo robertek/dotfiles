@@ -1,12 +1,11 @@
 #
-# variables 
+# variables
 #
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
-export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 export EDITOR="vim"
 
 autotmux() {
@@ -38,6 +37,7 @@ autozellij() {
 [[ -e $HOME/.profile ]] && source $HOME/.profile
 
 [[ -z $SSH_CLIENT ]] || autozellij || autotmux
+
 
 #
 # aliases
@@ -89,10 +89,8 @@ setopt autopushd
 setopt autoremoveslash
 setopt banghist
 setopt braceccl
-setopt chaselinks
 setopt combiningchars
 setopt correct
-setopt extendedglob
 setopt histexpiredupsfirst
 setopt histfindnodups
 setopt histignorealldups
@@ -102,7 +100,6 @@ setopt histreduceblanks
 setopt histsavenodups
 setopt histverify
 setopt incappendhistory
-setopt interactivecomments
 setopt pushdignoredups
 setopt pushdsilent
 setopt pushdtohome
@@ -125,24 +122,18 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 #
 
 zinit wait lucid for \
-	zdharma-continuum/history-search-multi-word \
 	atinit"zicompinit; zicdreplay" \
 		zdharma-continuum/fast-syntax-highlighting \
 	zsh-users/zsh-autosuggestions \
 	mdumitru/git-aliases \
-	hcgraf/zsh-mercurial \
-	Aloxaf/fzf-tab \
 	jeffreytse/zsh-vi-mode
 
-#
-# misc settings
-#
-
-# enable the multi search
-zvm_after_init_commands+=("bindkey '^R' history-search-multi-word")
+# init fzf
+which fzf >/dev/null && source ${HOME}/.dotfiles/fzf.zsh
 
 # init the zoxide
 which zoxide >/dev/null && eval "$(zoxide init zsh)"
 
 # start the starship theme
+export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
