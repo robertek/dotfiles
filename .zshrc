@@ -83,14 +83,12 @@ alias vimpager="~/.vim/bundle/vimpager/vimpager"
 #
 # zsh settings
 #
-setopt appendhistory
 setopt autocd
 setopt autopushd
-setopt autoremoveslash
-setopt banghist
 setopt braceccl
 setopt combiningchars
-setopt correct
+setopt correctall
+setopt extendedhistory
 setopt histexpiredupsfirst
 setopt histfindnodups
 setopt histignorealldups
@@ -110,6 +108,22 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 #
+# extra keybindings
+#
+
+# Add text object extension -- eg ci" da(:
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+    for c in {a,i}{\',\",\`}; do
+        bindkey -M $m $c select-quoted
+    done
+done
+
+# ctrl-w removed word backwards as in emacs mode
+bindkey '^w' backward-kill-word
+
+#
 # Zinit
 #
 declare -A ZINIT
@@ -120,16 +134,15 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 #
 # plugins
 #
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light mdumitru/git-aliases
 
-zinit wait lucid for \
-	atinit"zicompinit; zicdreplay" \
-		zdharma-continuum/fast-syntax-highlighting \
-	zsh-users/zsh-autosuggestions \
-	mdumitru/git-aliases \
-	jeffreytse/zsh-vi-mode
-
-# init fzf
-which fzf >/dev/null && source ${HOME}/.dotfiles/fzf.zsh
+# fzf
+which fzf >/dev/null && zinit light joshskidmore/zsh-fzf-history-search
+which fzf >/dev/null && zinit light Aloxaf/fzf-tab
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 # init the zoxide
 which zoxide >/dev/null && eval "$(zoxide init zsh)"
