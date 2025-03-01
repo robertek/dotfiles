@@ -87,7 +87,7 @@ setopt autocd
 setopt autopushd
 setopt braceccl
 setopt combiningchars
-setopt correctall
+setopt correct
 setopt extendedhistory
 setopt histexpiredupsfirst
 setopt histfindnodups
