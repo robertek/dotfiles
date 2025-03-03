@@ -102,10 +102,22 @@ setopt pushdignoredups
 setopt pushdsilent
 setopt pushdtohome
 
+# fzf-tab
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
 # history
 HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
+
+autoload -U compinit; compinit
 
 #
 # extra keybindings
@@ -134,15 +146,16 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 #
 # plugins
 #
+
+zinit light zsh-users/zsh-completions
+
+# fzf
+which fzf >/dev/null && zinit light Aloxaf/fzf-tab
+which fzf >/dev/null && zinit light joshskidmore/zsh-fzf-history-search
+
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light mdumitru/git-aliases
-
-# fzf
-which fzf >/dev/null && zinit light joshskidmore/zsh-fzf-history-search
-which fzf >/dev/null && zinit light Aloxaf/fzf-tab
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 # init the zoxide
 which zoxide >/dev/null && eval "$(zoxide init zsh)"
