@@ -30,7 +30,11 @@ autozellij() {
 		which zellij >/dev/null 2>&1
 		[[ $? -ne 0 ]] && return 1
 
-		exec zellij attach -c $USER
+        SYSTEMD_RUN=""
+        which systemd-run >/dev/null 2>&1
+        [[ $? -eq 0 ]] && SUSTEMD_RUN="systemd-run --scope --user"
+
+		exec $SYSTEMD_RUN zellij attach -c $USER
 	fi
 }
 
