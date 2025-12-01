@@ -3,7 +3,7 @@
 #
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/local/sbin
+export PATH=$HOME/bin:$PATH
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export EDITOR="vim"
@@ -37,8 +37,6 @@ autozellij() {
 		exec $SYSTEMD_RUN zellij attach -c $USER
 	fi
 }
-
-[[ -e $HOME/.profile ]] && source $HOME/.profile
 
 [[ -z $SSH_CLIENT ]] || autozellij || autotmux
 
@@ -167,3 +165,9 @@ which zoxide >/dev/null && eval "$(zoxide init zsh)"
 # start the starship theme
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
+
+
+#
+# Load local profile
+# 
+[[ -e $HOME/.profile ]] && source $HOME/.profile
