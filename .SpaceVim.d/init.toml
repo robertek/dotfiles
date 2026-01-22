@@ -9,7 +9,7 @@ enable_tabline_filetype_icon = true
 default_indent = 4
 
 # do not expand tabs
-expand_tab = false
+expand_tab = true
 
 # set end column line
 max_column = 81
