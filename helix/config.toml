@@ -3,3 +3,31 @@ theme = "gruvbox"
 [editor]
 true-color = true
 bufferline = "always"
+cursorline = true
+lsp.display-inlay-hints = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+#
+# Misc useful keys
+#
+[keys.normal]
+"ret" = "goto_word"
+[keys.normal.space]
+o = "file_picker_in_current_buffer_directory"
+
+#
+# git keys
+#
+[keys.normal.space.z.g]
+h = ":sh zellij run --close-on-exit -f -x=1%% -y=4%% --width=99%% --height=92%% -- lazygit --filter \"%{buffer_name}\""
+g = [
+  ":write-all",
+  ":new",
+  ":insert-output lazygit",
+  ":buffer-close!",
+  ":redraw",
+  ":reload-all"
+]
+b = ":sh zellij run --close-on-exit -f -x=1%% -y=4%% --width=99%% --height=92%% -- git blame --color-by-age --color-lines \"%{buffer_name}\""
