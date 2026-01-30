@@ -6,7 +6,7 @@ export LC_ALL=en_US.UTF-8
 export PATH=$HOME/bin:$PATH
 export GIT_AUTHOR_NAME="Robert David"
 export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
-export EDITOR="vim"
+export EDITOR="hx"
 
 autotmux() {
 	if [[ -z "$ZELLIJ" && -z "$TMUX" ]]
@@ -151,13 +151,32 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 
 zinit light zsh-users/zsh-completions
 
+zinit light Multirious/zsh-helix-mode
+
 # fzf
 which fzf >/dev/null && zinit light Aloxaf/fzf-tab
 which fzf >/dev/null && zinit light joshskidmore/zsh-fzf-history-search
 
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
 zinit light mdumitru/git-aliases
+
+# autosugestions with helix support
+zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(
+  zhm_history_prev
+  zhm_history_next
+  zhm_prompt_accept
+  zhm_accept
+  zhm_accept_or_insert_newline
+)
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS+=(
+  zhm_move_right
+  zhm_clear_selection_move_right
+)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(
+  zhm_move_next_word_start
+  zhm_move_next_word_end
+)
 
 # init the zoxide
 which zoxide >/dev/null && eval "$(zoxide init zsh)"
