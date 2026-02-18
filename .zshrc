@@ -5,7 +5,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH=$HOME/bin:$PATH
 export GIT_AUTHOR_NAME="Robert David"
-export GIT_AUTHOR_EMAIL="robert.david@posteo.net"
 export EDITOR="hx"
 
 autotmux() {
@@ -151,11 +150,15 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 
 zinit light zsh-users/zsh-completions
 
-zinit light Multirious/zsh-helix-mode
+[[ $(uname -o) == "GNU/Linux" ]] && zinit light Multirious/zsh-helix-mode
 
 # fzf
-which fzf >/dev/null && zinit light Aloxaf/fzf-tab
-which fzf >/dev/null && zinit light joshskidmore/zsh-fzf-history-search
+if which fzf >/dev/null; then
+	zinit light Aloxaf/fzf-tab
+	zinit light joshskidmore/zsh-fzf-history-search
+	zhm_wrap_widget fzf-tab-complete zhm_fzf_tab_complete
+	bindkey '^I' zhm_fzf_tab_complete
+fi
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light mdumitru/git-aliases
