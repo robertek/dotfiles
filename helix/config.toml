@@ -5,6 +5,7 @@ true-color = true
 bufferline = "always"
 cursorline = true
 lsp.display-inlay-hints = true
+soft-wrap.enable = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
