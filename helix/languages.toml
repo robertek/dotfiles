@@ -53,10 +53,15 @@ language-servers = [ "scls", "harper-ls" ]
 
 [[language]]
 name = "c"
-formatter = { command = 'clang-format' }
+formatter = { command = "clang-format" }
 auto-format = true
 language-servers = [ "clangd", "harper-ls"]
 roots = [".git"]
+
+[[language]]
+name = "bash"
+formatter = { command = "shfmt", args = ["-i", "2", "-ci", "-"] }
+# auto-format = true
 
 # introduce a new language to enable completion on any doc by forcing set language with :set-language stub
 [[language]]
