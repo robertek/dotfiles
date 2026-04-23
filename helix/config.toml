@@ -4,11 +4,25 @@ theme = "gruvbox"
 true-color = true
 bufferline = "always"
 cursorline = true
-lsp.display-inlay-hints = true
 soft-wrap.enable = true
+lsp.display-inlay-hints = true
+inline-diagnostics.cursor-line = "hint"
 
-[editor.inline-diagnostics]
-cursor-line = "hint"
+[editor.statusline]
+center = [
+  "version-control",
+  "separator",
+  "file-type",
+  "file-encoding",
+  "separator",
+  "file-indent-style"
+]
+right = [
+  "diagnostics",
+  "workspace-diagnostics",
+  "position",
+  "position-percentage",
+]
 
 #
 # Misc useful keys
