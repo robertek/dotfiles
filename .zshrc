@@ -23,10 +23,7 @@ autozellij() {
   if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
     which zellij >/dev/null 2>&1 || return 1
 
-    SYSTEMD_RUN=""
-    which systemd-run >/dev/null 2>&1 && SYSTEMD_RUN="systemd-run --scope --user"
-
-    exec $SYSTEMD_RUN zellij attach -c "$USER"
+    exec zellij attach -c "$USER"
   fi
 }
 
