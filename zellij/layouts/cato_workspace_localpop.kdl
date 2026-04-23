@@ -1,0 +1,99 @@
+layout {
+    //
+    // Common config
+    //
+    cwd "/home/robert/cato"
+
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab_template name="repo_tab" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane borderless=true command="devenv" {
+            args "shell" "zsh"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+        floating_panes {
+            pane
+            pane
+            pane
+        }
+
+    }
+
+    swap_floating_layout name="enlarged" {
+        floating_panes max_panes=5 {
+            pane { x "5%"; y 1; width "90%"; height "90%"; }
+            pane { x "5%"; y 2; width "90%"; height "90%"; }
+            pane { x "5%"; y 3; width "90%"; height "90%"; }
+            pane { x "5%"; y 4; width "90%"; height "90%"; }
+            pane { x "5%"; y 5; width "90%"; height "90%"; }
+        }
+    }
+
+    swap_floating_layout name="spread" {
+        floating_panes max_panes=1 {
+            pane {y "50%"; x "50%"; }
+        }
+        floating_panes max_panes=2 {
+            pane { x "1%"; y "25%"; width "45%"; }
+            pane { x "50%"; y "25%"; width "45%"; }
+        }
+        floating_panes max_panes=3 {
+            pane { y "55%"; width "45%"; height "45%"; }
+            pane { x "1%"; y "1%"; width "45%"; }
+            pane { x "50%"; y "1%"; width "45%"; }
+        }
+        floating_panes max_panes=4 {
+            pane { x "1%"; y "55%"; width "45%"; height "45%"; }
+            pane { x "50%"; y "55%"; width "45%"; height "45%"; }
+            pane { x "1%"; y "1%"; width "45%"; height "45%"; }
+            pane { x "50%"; y "1%"; width "45%"; height "45%"; }
+        }
+    }
+
+    swap_floating_layout name="tile" {
+        floating_panes max_panes=1 {
+            pane { x "5%"; y "5%"; width "90%"; height "90%"; }
+        }
+        floating_panes max_panes=2 {
+            pane { x "5%"; y "5%"; width "90%"; height "45%"; }
+            pane { x "5%"; y "50%"; width "90%"; height "45%"; }
+        }
+        floating_panes max_panes=3 {
+            pane { x "5%"; y "5%"; width "90%"; height "45%"; }
+            pane { x "5%"; y "50%"; width "45%"; height "45%"; }
+            pane { x "50%"; y "50%"; width "45%"; height "45%"; }
+        }
+    }
+
+    //
+    // Layout config
+    //
+
+    repo_tab name="Platform" cwd="workspaces"
+
+    repo_tab name="Catod" cwd="workspaces"
+
+    tab name="Docker POP" hide_floating_panes=true {
+        pane split_direction="vertical" {
+            pane cwd="env" size="50%"
+            pane size="50%" stacked=true {
+                pane name="pop"
+                pane name="socket"
+                pane name="user"
+            }
+        }
+    }
+}
