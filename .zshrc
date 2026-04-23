@@ -8,78 +8,48 @@ export GIT_AUTHOR_NAME="Robert David"
 export EDITOR="hx"
 
 autotmux() {
-	if [[ -z "$ZELLIJ" && -z "$TMUX" ]]
-	then
-		which tmux >/dev/null 2>&1
-		[[ $? -ne 0 ]] && return 1
+  if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
+    which tmux >/dev/null 2>&1 || return 1
 
-		tmux has -t $USER
-		if [[ $? -eq 0 ]]
-		then
-			exec tmux -2 attach -d -t $USER
-		else
-			exec tmux -2 new -s $USER
-		fi
-	fi
+    if tmux has -t "$USER"; then
+      exec tmux -2 attach -d -t "$USER"
+    else
+      exec tmux -2 new -s "$USER"
+    fi
+  fi
 }
 
 autozellij() {
-	if [[ -z "$ZELLIJ" && -z "$TMUX" ]]
-	then
-		which zellij >/dev/null 2>&1
-		[[ $? -ne 0 ]] && return 1
+  if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
+    which zellij >/dev/null 2>&1 || return 1
 
-        SYSTEMD_RUN=""
-        which systemd-run >/dev/null 2>&1
-        [[ $? -eq 0 ]] && SUSTEMD_RUN="systemd-run --scope --user"
+    SYSTEMD_RUN=""
+    which systemd-run >/dev/null 2>&1 && SYSTEMD_RUN="systemd-run --scope --user"
 
-		exec $SYSTEMD_RUN zellij attach -c $USER
-	fi
+    exec $SYSTEMD_RUN zellij attach -c "$USER"
+  fi
 }
 
 [[ -z $SSH_CLIENT ]] || autozellij || autotmux
-
 
 #
 # aliases
 #
 
 # colored ls and its shortcuts
-LS=""
-which lsd >/dev/null && LS="lsd"
-which eza >/dev/null && LS="eza"
-
-case $LS in
-	"eza")
-		EZA_DEF="--icons --group-directories-first"
-		EZA_DEFL="$EZA_DEF --octal-permissions --no-permissions --long"
-		alias ls="eza $EZA_DEF"
-		alias ll="eza $EZA_DEFL"
-		alias la="eza $EZA_DEF --all"
-		alias lt="eza $EZA_DEF --tree"
-		alias l="eza $EZA_DEFL --all"
-		;;
-	"lsd")
-		LSD_DEF="--group-directories-first"
-		LSD_DEFL="$LSD_DEF --permission octal --blocks permission,size,user,date,name"
-		alias ls="lsd $LSD_DEF"
-		alias ll="lsd $LSD_DEFL --human-readable"
-		alias la="lsd $LSD_DEF --almost-all"
-		alias lt="lsd $LSD_DEF --tree --depth 3"
-		alias l="lsd $LSD_DEFL --almost-all --human-readable"
-		;;
-	*)
-		export LSCOLORS='exfxcxdxbxegedAbAgacad'
-		export LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=1;;41:sg=1;;46:tw=0;42:ow=0;43:"
-		ls --color -d . &>/dev/null && alias ls='ls --color' || { ls -G . &>/dev/null && alias ls='ls -G' }
-
-		alias ll="ls -lh"
-		alias la="ls -A"
-		alias l="ls -lAh"
-		;;
-esac
-
-alias vimpager="~/.vim/bundle/vimpager/vimpager"
+if which eza >/dev/null; then
+  EZA_DEF="--icons --group-directories-first"
+  EZA_DEFL="$EZA_DEF --octal-permissions --no-permissions --long"
+  alias ls="eza $EZA_DEF"
+  alias ll="eza $EZA_DEFL"
+  alias la="eza $EZA_DEF --all"
+  alias lt="eza $EZA_DEF --tree"
+  alias l="eza $EZA_DEFL --all"
+else
+  alias ll="ls -lh"
+  alias la="ls -A"
+  alias l="ls -lAh"
+fi
 
 #
 # zsh settings
@@ -118,30 +88,15 @@ HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 
-autoload -U compinit; compinit
-
-#
-# extra keybindings
-#
-
-# Add text object extension -- eg ci" da(:
-autoload -U select-quoted
-zle -N select-quoted
-for m in visual viopp; do
-    for c in {a,i}{\',\",\`}; do
-        bindkey -M $m $c select-quoted
-    done
-done
-
-# ctrl-w removed word backwards as in emacs mode
-bindkey '^w' backward-kill-word
+autoload -U compinit
+compinit
 
 #
 # Zinit
 #
 declare -A ZINIT
 ZINIT[NO_ALIASES]=1
-mkdir -p ${HOME}/.zinit
+mkdir -p "${HOME}/.zinit"
 source "${HOME}/.dotfiles/zinit/zinit.zsh"
 
 #
@@ -154,10 +109,10 @@ zinit light zsh-users/zsh-completions
 
 # fzf
 if which fzf >/dev/null; then
-	zinit light Aloxaf/fzf-tab
-	zinit light joshskidmore/zsh-fzf-history-search
-	zhm_wrap_widget fzf-tab-complete zhm_fzf_tab_complete
-	bindkey '^I' zhm_fzf_tab_complete
+  zinit light Aloxaf/fzf-tab
+  zhm_wrap_widget fzf-tab-complete zhm_fzf_tab_complete
+  bindkey '^I' zhm_fzf_tab_complete
+  which atuin >/dev/null || zinit light joshskidmore/zsh-fzf-history-search
 fi
 
 zinit light zdharma-continuum/fast-syntax-highlighting
@@ -181,6 +136,18 @@ ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(
   zhm_move_next_word_end
 )
 
+# atuin
+if which atuin >/dev/null; then
+  # export ATUIN_NOBIND="true"
+  eval "$(atuin init zsh)"
+  bindkey -M hxnor '^r' atuin-up-search-vicmd
+  bindkey -M hxnor '^[[A' atuin-up-search
+  bindkey -M hxnor '^[OA' atuin-up-search
+  bindkey -M hxins '^r' atuin-up-search-vicmd
+  bindkey -M hxins '^[[A' atuin-up-search
+  bindkey -M hxins '^[OA' atuin-up-search
+fi
+
 # init the zoxide
 which zoxide >/dev/null && eval "$(zoxide init zsh)"
 
@@ -188,8 +155,7 @@ which zoxide >/dev/null && eval "$(zoxide init zsh)"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
 
-
 #
 # Load local profile
-# 
+#
 [[ -e $HOME/.profile ]] && source $HOME/.profile
