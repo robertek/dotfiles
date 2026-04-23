@@ -155,6 +155,12 @@ which zoxide >/dev/null && eval "$(zoxide init zsh)"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
 
+
+#
+# load nix-pkg on Linux
+#
+[[ $(uname -o) == "GNU/Linux" ]] && source "$HOME/.dotfiles/nix-pkg.sh"
+
 #
 # Load local profile
 #
