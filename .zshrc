@@ -102,7 +102,11 @@ source "${HOME}/.dotfiles/zinit/zinit.zsh"
 
 zinit light zsh-users/zsh-completions
 
-[[ $(uname -o) == "GNU/Linux" ]] && zinit light Multirious/zsh-helix-mode
+if [[ $(uname -o) == "GNU/Linux" ]]; then
+  zinit light Multirious/zsh-helix-mode
+else
+  zinit light robertek/zsh-helix-mode
+fi
 
 # fzf
 if which fzf >/dev/null; then
@@ -151,7 +155,6 @@ which zoxide >/dev/null && eval "$(zoxide init zsh)"
 # start the starship theme
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
-
 
 #
 # load nix-pkg on Linux
