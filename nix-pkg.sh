@@ -27,7 +27,7 @@ _pkg_upgradable() {
 }
 
 _pkg_update() {
-  nix-channel --update
+  nix-channel --update -vvv
 
   echo "Upgradable packages, if any:"
   _pkg_upgradable
