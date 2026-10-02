@@ -156,6 +156,9 @@ which zoxide >/dev/null && eval "$(zoxide init zsh)"
 export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 which starship >/dev/null && eval "$(starship init zsh)"
 
+# init direnv
+which direnv >/dev/null && eval "$(direnv hook zsh)"
+
 #
 # load nix-pkg on Linux
 #
