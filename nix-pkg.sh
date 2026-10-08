@@ -15,7 +15,14 @@ _pkg_uninstall() {
 }
 
 _pkg_search() {
-  nix search nixpkgs "$@" | bat
+  nix search nixos "$@" | bat
+}
+
+_pkg_clean() {
+  echo "Deleting old generations (>30d)"
+  nix-env --delete-generations 30d
+  echo "Start GC"
+  nix-store --gc
 }
 
 _pkg_list() {
@@ -27,7 +34,7 @@ _pkg_upgradable() {
 }
 
 _pkg_update() {
-  nix-channel --update -vvv
+  nix-channel --update -vvv 2>&1 | grep -e "downloading|HTTP status"
 
   echo "Upgradable packages, if any:"
   _pkg_upgradable
@@ -106,6 +113,7 @@ _pkg_compl() {
       "hold:Hold package"
       "release:Release package"
       "contents:List package contents"
+      "clean:Clean old generations and GC"
     )
 
     _describe "pkg commands" pkg_cmds
